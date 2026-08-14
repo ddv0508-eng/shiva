@@ -582,35 +582,18 @@ audio.volume = 0.7
 
 function changeBackground() {
 
-  const previousBackground =
-    currentBackground
+  const previous = currentBackground
 
   currentBackground =
-    (
-      currentBackground +
-      1
-    ) %
-    backgrounds.length
+    (currentBackground + 1) % backgrounds.length
 
-  backgrounds[
-    currentBackground
-  ].classList.add(
-    "active"
-  )
+  backgrounds[currentBackground].classList.add("active")
 
-  backgrounds[
-    previousBackground
-  ].classList.remove(
-    "active"
-  )
-
+  backgrounds[previous].classList.remove("active")
 }
 
+setInterval(changeBackground, 12000)
 
-setInterval(
-  changeBackground,
-  12000
-)
 
 
 /* PERSISTENT SNOW */
@@ -636,8 +619,8 @@ function createSnow() {
 
   const snowAmount =
     window.innerWidth < 700
-      ? 90
-      : 180
+      ? 70
+      : 110
 
   for (
     let index = 0;
