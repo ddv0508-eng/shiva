@@ -43,10 +43,10 @@ body {
 
 .bg {
   position: absolute;
-  inset: -3%;
+  inset: -2%;
 
-  width: 106%;
-  height: 106%;
+  width: 104%;
+  height: 104%;
 
   opacity: 0;
 
@@ -54,13 +54,24 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 
-  transform: scale(1.04);
+  transform: translate3d(0, 0, 0) scale(1.04);
 
   transition:
-    opacity 2.4s ease,
-    transform 12s ease;
+    opacity 1800ms linear,
+    transform 14000ms linear;
 
   will-change: opacity, transform;
+
+  backface-visibility: hidden;
+  transform-origin: center;
+}
+
+.bg.active {
+  opacity: 1;
+
+  transform:
+    translate3d(0, 0, 0)
+    scale(1.08);
 }
 
 .bg-one {
@@ -130,21 +141,16 @@ body {
 .snowflake {
   position: absolute;
 
-  top: -15vh;
+  top: -12vh;
 
   width: var(--size);
   height: var(--size);
 
   border-radius: 50%;
 
-  opacity: var(--opacity);
-
   background: #ffffff;
 
-  filter: blur(var(--blur));
-
-  box-shadow:
-    0 0 5px rgba(255, 255, 255, 0.45);
+  opacity: var(--opacity);
 
   animation:
     snowfall
@@ -154,6 +160,10 @@ body {
     infinite;
 
   will-change: transform;
+
+  transform: translate3d(0, 0, 0);
+
+  backface-visibility: hidden;
 }
 
 @keyframes snowfall {
@@ -162,52 +172,43 @@ body {
     transform:
       translate3d(
         0,
-        -10vh,
+        -12vh,
         0
       );
   }
 
-  15% {
+  20% {
     transform:
       translate3d(
         var(--drift-one),
-        15vh,
+        20vh,
         0
       );
   }
 
-  30% {
+  40% {
     transform:
       translate3d(
         var(--drift-two),
-        30vh,
+        40vh,
         0
       );
   }
 
-  50% {
+  60% {
     transform:
       translate3d(
         var(--drift-three),
-        50vh,
+        60vh,
         0
       );
   }
 
-  70% {
+  80% {
     transform:
       translate3d(
         var(--drift-four),
-        70vh,
-        0
-      );
-  }
-
-  85% {
-    transform:
-      translate3d(
-        var(--drift-five),
-        90vh,
+        80vh,
         0
       );
   }
@@ -216,7 +217,7 @@ body {
     transform:
       translate3d(
         var(--drift-six),
-        120vh,
+        115vh,
         0
       );
   }
@@ -391,8 +392,8 @@ body {
   border: 1px solid rgba(255, 255, 255, .24);
 
   backdrop-filter:
-    blur(28px)
-    saturate(150%);
+    blur(14px)
+    saturate(125%);
 
   box-shadow:
     0 24px 60px rgba(0, 0, 0, .42),
